@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PedraPapelTesoura.PlayerView">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <HorizontalStackLayout>
+                <Label
+                    Text="Jogador:"
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+                <Entry
+                    x:Name="playerName"
+                    WidthRequest="350"
+                    Text="{Binding PlayerName}"
+                    />
+                <Label
+                    x:Name="Score"
+                    Text="{Binding Score}"
+                    Style="{StaticResource SubHeadline}"/>
+            </HorizontalStackLayout>
+            <Label
+                x:Name="Result"
+                Text="{Binding Result}"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level2"/>
+            <HorizontalStackLayout>
+                <Label
+                    Text="Você escolheu:"/>
+                <Label
+                    x:Name="userChoice"
+                    Text="{Binding PlayerChoice}"
+                    />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    Text="O oponente escolheu:"/>
+                <Label
+                    x:Name="OponentChoice"
+                    Text="{Binding OponentChoice}"/>
+            </HorizontalStackLayout>
+            <Button
+                x:Name="PlayBtn"
+                Text="Jogar" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Command="{Binding PlayCommand}"
+                HorizontalOptions="Fill" />
+            <Picker
+                x:Name="ChoicePicker"
+                Title="Escolha sua jogada"
+                SelectedItem="{Binding PlayerChoice}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>pedra</x:String>
+                        <x:String>papel</x:String>
+                        <x:String>tesoura</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            
+            </Picker>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
